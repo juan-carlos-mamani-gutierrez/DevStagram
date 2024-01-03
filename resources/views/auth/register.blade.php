@@ -48,7 +48,12 @@
         name="username"
         type="text"
         placeholder="Tu Nombre de Usuario"
-        class="border p-3 w-full rounded-lg"
+        class="border p-3 w-full rounded-lg
+        @error('username')
+            border-red-500
+        @enderror"
+        {{-- para no limpiar el dato --}}
+        value="{{ old('username') }}" "
         />
           {{-- validacion --}}
           @error('username')
@@ -67,7 +72,12 @@
         name="email"
         type="email"
         placeholder="Tu Email de Registro"
-        class="border p-3 w-full rounded-lg"
+        class="border p-3 w-full rounded-lg
+        @error('email')
+            border-red-500
+        @enderror"
+        {{-- para no limpiar el dato --}}
+        value="{{ old('email') }}" "
         />
           {{-- validacion --}}
           @error('email')
@@ -86,7 +96,13 @@
         name="password"
         type="password"
         placeholder="Password de Registro"
-        class="border p-3 w-full rounded-lg"
+        class="border p-3 w-full rounded-lg
+        @error('password')
+            border-red-500
+        @enderror"
+        {{-- para no limpiar el dato --}}
+        value="{{ old('password') }}" 
+        "
         />
           {{-- validacion --}}
           @error('password')

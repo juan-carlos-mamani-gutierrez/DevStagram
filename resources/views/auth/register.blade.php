@@ -11,8 +11,8 @@
       <img src="{{asset('img/registrar.jpg')}}" alt="imagen registro usuarios">
     </div>
     <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
-<form action="/crear-cuenta" method="POST">
-    @csrf
+<form action="{{ route('register') }}" method="POST">
+    @csrf {{-- validacion anti ataques --}}
     <div class="mb-5">
         <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
             Nombre
@@ -22,9 +22,23 @@
         name="name"
         type="text"
         placeholder="Tu Nombre"
-        class="border p-3 w-full rounded-lg"
+        class="border p-3 w-full rounded-lg
+        {{-- cuando hara error borde se vuelve rojo --}}
+        @error('name')
+            border-red-500
+        @enderror"
+        {{-- para no limpiar el dato --}}
+        value="{{ old('name') }}" 
         />
+          {{-- validacion --}}
+         @error('name')
+           <p class="bg-red-500 text-white my-2 rounded-lg 
+             text-sm p-2 text-center">
+             {{ $message }}
+           </p>
+         @enderror
     </div>
+  
     <div class="mb-5">
         <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
             Username
@@ -36,6 +50,13 @@
         placeholder="Tu Nombre de Usuario"
         class="border p-3 w-full rounded-lg"
         />
+          {{-- validacion --}}
+          @error('username')
+          <p class="bg-red-500 text-white my-2 rounded-lg 
+            text-sm p-2 text-center">
+            {{ $message }}
+          </p>
+        @enderror
     </div>
     <div class="mb-5">
         <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -48,6 +69,13 @@
         placeholder="Tu Email de Registro"
         class="border p-3 w-full rounded-lg"
         />
+          {{-- validacion --}}
+          @error('email')
+          <p class="bg-red-500 text-white my-2 rounded-lg 
+            text-sm p-2 text-center">
+            {{ $message }}
+          </p>
+        @enderror
     </div>
     <div class="mb-5">
         <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -60,6 +88,13 @@
         placeholder="Password de Registro"
         class="border p-3 w-full rounded-lg"
         />
+          {{-- validacion --}}
+          @error('password')
+          <p class="bg-red-500 text-white my-2 rounded-lg 
+            text-sm p-2 text-center">
+            {{ $message }}
+          </p>
+        @enderror
     </div>
     <div class="mb-5">
         <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">

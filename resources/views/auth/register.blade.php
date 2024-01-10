@@ -11,7 +11,7 @@
       <img src="{{asset('img/registrar.jpg')}}" alt="imagen registro usuarios">
     </div>
     <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
-<form action="{{ route('register') }}" method="POST">
+<form action="{{ route('register') }}" method="POST" novalidate>
     @csrf {{-- validacion anti ataques --}}
     <div class="mb-5">
         <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -53,7 +53,7 @@
             border-red-500
         @enderror"
         {{-- para no limpiar el dato --}}
-        value="{{ old('username') }}" "
+        value="{{ old('username') }}" 
         />
           {{-- validacion --}}
           @error('username')
@@ -77,7 +77,7 @@
             border-red-500
         @enderror"
         {{-- para no limpiar el dato --}}
-        value="{{ old('email') }}" "
+        value="{{ old('email') }}" 
         />
           {{-- validacion --}}
           @error('email')

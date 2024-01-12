@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>DevStagram - @yield('titulo')</title>    
+        <title>DevStagram - @yield('titulo')</title>  
+        {{-- estilos de dropzone --}}
+        @stack('styles')  
         {{-- poniendo talwin segun la documentacion --}}
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
@@ -24,7 +26,7 @@
                 {{-- TODO: otra forma --}}
                  @auth
                  <nav class="flex gap-2 items-center">
-
+                   {{-- TODO boton de crear --}}
                     <a class="flex items-center gap-2 bg-white borde p-2 text-gray-600 rounded text-sm
                     uppercase font-bold cursor-pointer" href="{{ route('posts.create') }}">
 
@@ -36,11 +38,12 @@
                        Crear
                     </a>
                     {{-- TODO usuario --}}
-                    <a class="font-bold  text-gray-600 text-sm" href="#">Hola
+                    <a class="font-bold  text-gray-600 text-sm" href="{{ route('posts.index',auth()->user()->username) }}">Hola
                         <span class="font-normal">
                             {{auth()->user()->username}}
                         </span>
                     </a>
+                    {{-- TODO: cerrar sececion --}}
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="font-bold uppercase text-gray-600 text-sm">

@@ -22,7 +22,7 @@ class ImagenController extends Controller
         $imagenServidor->resizeDown(1000,1000);
 
         $imagenPath = public_path('uploads') . '/' . $nombreImagen;
-        $imagenServidor->toPng()->save($imagenPath);
+        $imagenServidor->save($imagenPath);
 
         return response()->json(['imagen' => $nombreImagen]);
         
